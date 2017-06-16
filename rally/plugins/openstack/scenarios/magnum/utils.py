@@ -17,10 +17,10 @@ import random
 import string
 import time
 
-import k8sclient.client as k8s_client
+import kubernetes.client as k8s_client
 from oslo_config import cfg
 
-from k8sclient.client.rest import ApiException
+from kubernetes.client.rest import ApiException
 from rally.common import utils as common_utils
 from rally import exceptions
 from rally.plugins.openstack import scenario

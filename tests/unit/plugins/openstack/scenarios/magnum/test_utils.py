@@ -14,10 +14,10 @@
 
 import os
 
-import k8sclient.client as k8s_client
+import kubernetes.client as k8s_client
 import mock
 
-from k8sclient.client.rest import ApiException
+from kubernetes.client.rest import ApiException
 from rally import exceptions
 from rally.plugins.openstack.scenarios.magnum import utils
 from tests.unit import test
@@ -133,8 +133,8 @@ class MagnumScenarioTestCase(test.ScenarioTestCase):
         self._test_atomic_action_timer(
             self.scenario.atomic_actions(), "magnum.create_ca_certificate")
 
-    @mock.patch("k8sclient.client.apis.apiv_api.ApivApi")
-    @mock.patch("k8sclient.client.api_client.ApiClient")
+    @mock.patch("kubernetes.client.apis.apiv_api.ApivApi")
+    @mock.patch("kubernetes.client.api_client.ApiClient")
     def test_get_k8s_api_client_using_tls(self, mock_api_client,
                                           mock_apiv_api):
         self.context.update({
@@ -164,8 +164,8 @@ class MagnumScenarioTestCase(test.ScenarioTestCase):
             ca_certs=ca_certs)
         mock_apiv_api.assert_called_once_with(k8s_client)
 
-    @mock.patch("k8sclient.client.apis.apiv_api.ApivApi")
-    @mock.patch("k8sclient.client.api_client.ApiClient")
+    @mock.patch("kubernetes.client.apis.apiv_api.ApivApi")
+    @mock.patch("kubernetes.client.api_client.ApiClient")
     def test_get_k8s_api_client(self, mock_api_client,
                                 mock_apiv_api):
         self.context.update({
